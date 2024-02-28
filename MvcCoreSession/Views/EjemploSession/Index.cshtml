@@ -1,8 +1,19 @@
 ﻿<h1>Ejemplos Session</h1>
 
-<h3 style="color:blue">
-    @ViewData["NUMERO"]
-</h3>
+@{
+    Mascota mascota =
+        Context.Session.GetObject<Mascota>("MASCOTAOBJECT");
+}
+
+@if (mascota != null)
+{
+    <h2 style="color:blue">
+        @mascota.Nombre, @mascota.Raza, @mascota.Edad
+    </h2>
+}
+
+
+<img src="~/images/rex.jpg" style="width: 150px; height: 150px" />
 
 <h2 style="color:fuchsia">
     @Context.Session.GetString("nombre")
@@ -17,9 +28,29 @@
             Session Simple
         </a>
     </li>
+    <li class="list-group-item list-group-item-info">
+        <a asp-controller="EjemploSession" asp-action="SessionMascotaObject">
+            Session Object Extension
+        </a>
+    </li>
+    <li class="list-group-item list-group-item-info">
+        <a asp-controller="EjemploSession" asp-action="SessionCollectionObject">
+            Session Collection Extension
+        </a>
+    </li>
+    <li class="list-group-item list-group-item-info">
+        <a asp-controller="EjemploSession" asp-action="SessionMascotaJson">
+            Session Json Object
+        </a>
+    </li>
     <li class="list-group-item">
         <a asp-controller="EjemploSession" asp-action="SessionMascota">
             Session Binary Object
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="EjemploSession" asp-action="SessionCollection">
+            Session Binary Collection
         </a>
     </li>
 </ul>
