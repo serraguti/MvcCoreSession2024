@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSingleton<IHttpContextAccessor
+    , HttpContextAccessor>();
+
 //NECESITAMOS HABILITAR EL SERVICIO DE MEMORIA CACHE
 builder.Services.AddDistributedMemoryCache();
 //SESSION PODEMOS CONFIGURARLO CON TIEMPO DE INACTIVIDAD
